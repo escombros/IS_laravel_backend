@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\File\PDFController;
 //});
 
 Route::get('prueba', function () {
-    return 'api funcionando';
+    return 'api funcionando hola';
 });
 
 //Route::post('/pdf', [PdfController::class, 'store']);

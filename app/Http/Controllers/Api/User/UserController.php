@@ -84,7 +84,15 @@ class UserController extends Controller
             return $this->sendError('Authentication', trans('No se encontró usuario'), 403);
         }
 
-        return $this->sendResponse($this->createAccesTokenResponse($user), trans('usuario Autenticado con éxito'));
+        $token = $user->createToken('auth_token')->plainTextToken;
+            
+        
+        $respuesta = [
+            'ruta' => '/main-index',
+            'access_token' => $token,
+            'token_type' => 'Bearer'
+        ];
+        return $this->sendResponse( $respuesta,trans('usuario Autenticado con éxito'));
 
     }
 
